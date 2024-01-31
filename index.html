@@ -38,14 +38,15 @@
 
         .password-input {
             margin-top: 1rem;
-            width: 90%;
-            padding: .25rem .75rem;
+            width: 70%;
+            padding: .50rem .75rem;
             background-color: hsl(0, 4%, 55%);
             color: white;
+            font-size: 20px;
             border: 1px solid hsl(0, 4%, 25%);
             outline: none;
             text-align: center;
-            border-radius: .3rem;
+            border-radius: .8rem;
         }
 
         .password-input:focus {
@@ -58,13 +59,12 @@
         }
 
     </style>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h1>Password Strength Test</h1>
-    <div class="strength-meter"></div>
+    <div class="strength-meter" id="strength-meter"></div>
     <input class="password-input" id="password-input" value="password" type="text" autofocus aria-labelledby="password">
-    <div id="reasons" class="reasons">
-        <div>one reason</div>
-    </div>
+    <div id="reasons" class="reasons"></div>
 </body>
 </html>
