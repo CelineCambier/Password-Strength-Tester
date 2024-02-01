@@ -7,9 +7,9 @@ updateStrengthMeter();
 
 function updateStrengthMeter() {
   const weaknesses = calculatePasswordStrength(passwordInput.value);
-
   let strength = 100;
   reasonsContainer.innerHTML = "";
+
   weaknesses.forEach((weakness) => {
     if (weakness == null) return;
     strength -= weakness.deduction;
@@ -17,17 +17,26 @@ function updateStrengthMeter() {
     messageElement.innerText = weakness.message;
     reasonsContainer.appendChild(messageElement);
   });
+
+  if (strength === 100) {
+    const strongMessageElement = document.createElement("div");
+    strongMessageElement.innerText = "Your password is strong!";
+    reasonsContainer.appendChild(strongMessageElement);
+  }
+
   strengthMeter.style.setProperty("--strength", strength);
 }
 
 function calculatePasswordStrength(password) {
   const weaknesses = [];
+
   weaknesses.push(lengthWeakness(password));
   weaknesses.push(lowercaseWeakness(password));
   weaknesses.push(uppercaseWeakness(password));
   weaknesses.push(numberWeakness(password));
   weaknesses.push(specialCharactersWeakness(password));
   weaknesses.push(repeatCharactersWeakness(password));
+
   return weaknesses;
 }
 
